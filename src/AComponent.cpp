@@ -17,4 +17,14 @@ namespace nts {
     {
         return _type;
     }
+
+    void AComponent::setName(const std::string &name)
+    {
+        _name = name;
+    }
+
+    void AComponent::setType(const std::string &type)
+    {
+        _type = type;
+    }
 }

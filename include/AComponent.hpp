@@ -23,11 +23,13 @@ namespace nts {
             virtual void dump() const = 0;
             const std::string &getName() const;
             const std::string &getType() const;
+            void setName(const std::string &name);
+            void setType(const std::string &type);
 
         protected:
             std::vector<Pin *> _pins;
-            const std::string _name;
-            const std::string _type;
+            std::string _name;
+            std::string _type;
     };
 }
 

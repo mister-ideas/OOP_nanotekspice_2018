@@ -16,10 +16,10 @@ namespace nts {
         public:
             Main();
             ~Main();
-            static int core(int ac, char **av);
+            int core(int ac, char **av);
 
         private:
-            static std::unordered_map<std::string, IComponent *> _components;
+            std::unordered_map<std::string, IComponent *> _components;
     };
 }
 

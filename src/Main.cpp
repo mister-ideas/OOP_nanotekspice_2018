@@ -38,6 +38,7 @@ namespace nts {
 
     int main(int ac,  char **av)
     {
-        return (Main::core(ac, av));
+        Main main;
+        return (main.core(ac, av));
     }
 }
