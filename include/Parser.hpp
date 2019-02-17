@@ -19,6 +19,7 @@ namespace nts {
             std::unordered_map<std::string, IComponent *> parseFile(char *filename);
             bool isEmpty(const std::string &line) const;
             std::unordered_map<std::string, IComponent *> fillMap(std::stringstream &buff);
+            void fillLinks(std::stringstream &buff, std::unordered_map<std::string, IComponent *> components);
     };
 }
 
