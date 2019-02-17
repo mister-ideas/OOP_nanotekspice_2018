@@ -7,6 +7,7 @@
 
 #include <unordered_map>
 #include "Factory.hpp"
+#include "Error.hpp"
 
 namespace nts {
     Factory::Factory()
@@ -32,7 +33,7 @@ namespace nts {
         };
         auto it = ctors.find(type);
         if (it == ctors.end())
-            //throw error
+            throw Error("Create: Unknown type");
         return (*it->second)(name);
     }
 }
