@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** Input.cpp
+** Output.cpp
 ** File description:
 ** Methods
 */
