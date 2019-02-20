@@ -10,7 +10,11 @@ SRC=		src/AComponent.cpp	\
 			src/Main.cpp		\
 			src/Parser.cpp		\
 			src/Pin.cpp			\
-			src/Error.cpp
+			src/Error.cpp		\
+			src/4071.cpp		\
+			src/4081.cpp		\
+			src/Output.cpp		\
+			src/Input.cpp
 
 OBJ=		$(SRC:.cpp=.o)
 
