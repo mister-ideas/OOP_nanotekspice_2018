@@ -10,14 +10,13 @@
 
 #include "AComponent.hpp"
 
-class AndComponent : public nts::AComponent {
-public:
-    AndComponent();
-    ~AndComponent();
-    nts::Tristate compute(std::size_t pin = 1);
-
-protected:
-private:
+namespace nts {
+    class AndComponent : public nts::AComponent {
+        public:
+            AndComponent();
+            ~AndComponent();
+            nts::Tristate compute(std::size_t pin = 1);
+    };
 };
 
 #endif /* !ANDCOMPONENT_HPP_ */
