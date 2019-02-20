@@ -47,8 +47,8 @@ namespace nts {
                 if (component1 == components.end() || component2 == components.end())
                     throw Error("Link: Unknown component name");
                 else {
-                    component1->second->setLink(stoi(match[4]), *(component2->second), stoi(match[9]));
-                    component2->second->setLink(stoi(match[9]), *(component1->second), stoi(match[4]));
+                    component1->second->setLink(stoi(match[4]) - 1, *(component2->second), stoi(match[9]) - 1);
+                    component2->second->setLink(stoi(match[9]) - 1, *(component1->second), stoi(match[4]) - 1);
                 }
             }
         }
