@@ -21,7 +21,7 @@ namespace nts {
 
     void AComponent::dump() const
     {
-        std::cout << _name << ' - ' << _type << std::endl;
+        std::cout << _name << " - " << _type << std::endl;
     }
 
     const std::string &AComponent::getName() const
