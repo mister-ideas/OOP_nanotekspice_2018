@@ -18,6 +18,11 @@ namespace nts {
         return _type;
     }
 
+    std::vector<Pin *> AComponent::getPins() const
+    {
+        return _pins;
+    }
+
     void AComponent::setName(const std::string &name)
     {
         _name = name;

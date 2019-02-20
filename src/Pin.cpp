@@ -17,22 +17,22 @@ namespace nts {
     {
     }
 
-    const Pin::PIN_TYPE Pin::getType() const
+    Pin::PIN_TYPE Pin::getType() const
     {
         return _type;
     }
 
-    const Tristate Pin::getValue() const
+    Tristate Pin::getValue() const
     {
         return _value;
     }
 
-    const IComponent *Pin::getLinkedComponent() const
+    IComponent *Pin::getLinkedComponent() const
     {
         return _linked_component;
     }
 
-    const int Pin::getLinkedPin() const
+    int Pin::getLinkedPin() const
     {
         return _linked_pin;
     }

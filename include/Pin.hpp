@@ -22,10 +22,10 @@ namespace nts {
             };
             Pin(PIN_TYPE type = UNKNOWN);
             ~Pin();
-            const PIN_TYPE getType() const;
-            const Tristate getValue() const;
-            const IComponent *getLinkedComponent() const;
-            const int getLinkedPin() const;
+            PIN_TYPE getType() const;
+            Tristate getValue() const;
+            IComponent *getLinkedComponent() const;
+            int getLinkedPin() const;
             void setType(PIN_TYPE type);
             void setValue(Tristate value);
             void setLinkedComponent(IComponent *component);
