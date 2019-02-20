@@ -5,11 +5,13 @@
 ** Methods
 */
 
-#include "OrComponent.hpp"
+#include "4071.hpp"
 
 namespace nts {
-    OrComponent::OrComponent()
+    OrComponent::OrComponent(const std::string &name)
     {
+        _name = name;
+        _type = "4071";
         _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
         _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
         _pins.push_back(new Pin(Pin::PIN_TYPE::OUTPUT));

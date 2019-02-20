@@ -13,7 +13,7 @@
 namespace nts {
     class Output : public AComponent {
         public:
-            Output();
+            Output(const std::string &name);
             ~Output();
             nts::Tristate compute(std::size_t pin = 1);
     };

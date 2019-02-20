@@ -9,8 +9,10 @@
 #include "Pin.hpp"
 
 namespace nts {
-    Output::Output()
+    Output::Output(const std::string &name)
     {
+        _name = name;
+        _type = "Output";
         _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
     }
 

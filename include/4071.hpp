@@ -13,7 +13,7 @@
 namespace nts {
     class OrComponent : public nts::AComponent {
         public:
-            OrComponent();
+            OrComponent(const std::string &name);
             ~OrComponent();
             nts::Tristate compute(std::size_t pin = 1);
     };

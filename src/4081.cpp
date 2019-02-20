@@ -5,11 +5,27 @@
 ** Methods
 */
 
-#include "AndComponent.hpp"
+#include "4081.hpp"
 
 namespace nts {
-    AndComponent::AndComponent()
+    AndComponent::AndComponent(const std::string &name)
     {
+        _name = name;
+        _type = "4081";
+        _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::OUTPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::OUTPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::VSS));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::OUTPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::OUTPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::INPUT));
+        _pins.push_back(new Pin(Pin::PIN_TYPE::VDD));
     }
 
     AndComponent::~AndComponent()
