@@ -18,6 +18,9 @@ namespace nts {
             IComponent *createComponent(const std::string &type,
             const std::string &name);
             static IComponent *create4071(const std::string &name);
+            static IComponent *create4081(const std::string &name);
+            static IComponent *createOutput(const std::string &name);
+            static IComponent *createInput(const std::string &name);
     };
 }
 
