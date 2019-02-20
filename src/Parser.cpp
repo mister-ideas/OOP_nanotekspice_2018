@@ -35,20 +35,20 @@ namespace nts {
     void Parser::fillLinks(std::stringstream &buff, std::unordered_map<std::string, IComponent *> components)
     {
         std::string line;
-        std::regex regex("^(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\s+)(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\s*)((#)(.*))?$");
+        std::regex regex("^(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s+)(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s*)((#)(.*))?$");
         std::smatch match;
         std::unordered_map<std::string, IComponent *>::iterator component1;
         std::unordered_map<std::string, IComponent *>::iterator component2;
 
         while (std::getline(buff, line)) {
             if (std::regex_search(line, match, regex)) {
-                component1 = components.find(match[1]);
-                component2 = components.find(match[6]);
+                component1 = components.find(match[2]);
+                component2 = components.find(match[7]);
                 if (component1 == components.end() || component2 == components.end())
                     throw Error("Link: Unknown component name");
                 else {
-                    component1->second->setLink(stoi(match[3]), *(component2->second), stoi(match[8]));
-                    component2->second->setLink(stoi(match[8]), *(component1->second), stoi(match[3]));
+                    component1->second->setLink(stoi(match[4]), *(component2->second), stoi(match[9]));
+                    component2->second->setLink(stoi(match[9]), *(component1->second), stoi(match[4]));
                 }
             }
         }
@@ -59,16 +59,16 @@ namespace nts {
         Factory factory;
         std::unordered_map<std::string, IComponent *> components;
         std::string line;
-        std::regex regex("^([[:alnum:]]+)(\s+)([[:alnum:]]+)(\s*)((#)(.*))?$");
+        std::regex regex("^([[:alnum:]]+)(\\s+)([[:alnum:]]+)(\\s*)((#)(.*))?$");
         std::smatch match;
 
         while (std::getline(buff, line) && line.find(".links:") == std::string::npos) {
             if (std::regex_search(line, match, regex)) {
-                if (components.find(match[2]) == components.end()) {
-                    IComponent *temp = factory.createComponent(match[0], match[2]);
-                    dynamic_cast<AComponent *>(temp)->setType(match[0]);
-                    dynamic_cast<AComponent *>(temp)->setName(match[2]);
-                    components[match[2]] = temp;
+                if (components.find(match[3]) == components.end()) {
+                    IComponent *temp = factory.createComponent(match[1], match[3]);
+                    dynamic_cast<AComponent *>(temp)->setType(match[1]);
+                    dynamic_cast<AComponent *>(temp)->setName(match[3]);
+                    components[match[3]] = temp;
                 } else
                     throw Error("Create: Component name already used");
             } else
@@ -92,6 +92,8 @@ namespace nts {
                 continue;
             buff << line << std::endl;
         }
+        file.close();
+        std::getline(buff, line);
         if (line.find(".chipsets:") != std::string::npos)
             return fillMap(buff);
         else
