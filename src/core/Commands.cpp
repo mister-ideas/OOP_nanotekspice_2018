@@ -52,8 +52,8 @@ namespace nts {
         static std::regex const regex("^([[:alnum:]]+)(={1})(0{1}|1{1})$");
         std::smatch match;
         std::string input;
-        std::cout << "> ";
 
+        std::cout << "> ";
         try {
             if (std::getline(std::cin, input)) {
                 if (input.empty())
@@ -74,6 +74,9 @@ namespace nts {
                     else
                         throw Error("Init: Wrong command/input value change");
                 }
+            } else {
+                std::cout << std::endl;
+                exit(0);
             }
         } catch (Error &e) {
             std::cerr << "Error: " << e.what() << std::endl;
