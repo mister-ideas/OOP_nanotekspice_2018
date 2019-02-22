@@ -47,9 +47,9 @@ namespace nts {
             _pins[pin - 1]->setValue(nts::UNDEFINED);
         else if (_pins[input1]->getLinkedComponent()->compute(_pins[input1]->getLinkedPin()) == nts::TRUE
         && _pins[input2]->getLinkedComponent()->compute(_pins[input2]->getLinkedPin()) == nts::TRUE)
-            _pins[pin - 1]->setValue(nts::FALSE);
-        else
             _pins[pin - 1]->setValue(nts::TRUE);
+        else
+            _pins[pin - 1]->setValue(nts::FALSE);
         return _pins[pin - 1]->getValue();
     }
 }
