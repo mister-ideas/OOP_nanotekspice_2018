@@ -42,9 +42,11 @@ namespace nts {
             input2 = pin + 1;
         } else
             throw Error("Compute: Tried to compute an invalid pin");
-        if (_pins[input1]->getLinkedComponent()->compute(1) == nts::UNDEFINED || _pins[input2]->getLinkedComponent()->compute(1) == nts::UNDEFINED)
+        if (_pins[input1]->getLinkedComponent()->compute(_pins[input1]->getLinkedPin()) == nts::UNDEFINED
+        || _pins[input2]->getLinkedComponent()->compute(_pins[input2]->getLinkedPin()) == nts::UNDEFINED)
             _pins[pin - 1]->setValue(nts::UNDEFINED);
-        else if (_pins[input1]->getLinkedComponent()->compute(1) == nts::FALSE && _pins[input2]->getLinkedComponent()->compute(1) == nts::FALSE)
+        else if (_pins[input1]->getLinkedComponent()->compute(_pins[input1]->getLinkedPin()) == nts::FALSE
+        && _pins[input2]->getLinkedComponent()->compute(_pins[input2]->getLinkedPin()) == nts::FALSE)
             _pins[pin - 1]->setValue(nts::FALSE);
         else
             _pins[pin - 1]->setValue(nts::TRUE);
