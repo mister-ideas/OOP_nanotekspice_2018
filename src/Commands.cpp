@@ -56,8 +56,10 @@ namespace nts {
     void Commands::display(std::unordered_map<std::string, IComponent *> components) const
     {
         for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
-            if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output"))
-                std::cout << dynamic_cast<AComponent *>(it->second)->getName().c_str() << '=' << dynamic_cast<AComponent *>(it->second)->getPins()[0]->getValue() << std::endl;
+            if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output")) {
+                Tristate value = dynamic_cast<AComponent *>(it->second)->getPins()[0]->getValue();
+                std::cout << dynamic_cast<AComponent *>(it->second)->getName().c_str() << '=' << (value == Tristate::UNDEFINED ? 'U' : value) << std::endl;
+            }
         }
     }
 }
