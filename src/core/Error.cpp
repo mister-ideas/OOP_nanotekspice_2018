@@ -7,11 +7,13 @@
 
 #include "core/Error.hpp"
 
-Error::Error(const std::string &msg) : _msg(msg)
-{
-}
+namespace nts {
+    Error::Error(const std::string &msg) : _msg(msg)
+    {
+    }
 
-const char *Error::what() const noexcept
-{
-    return _msg.c_str();
+    const char *Error::what() const noexcept
+    {
+        return _msg.c_str();
+    }
 }
