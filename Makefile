@@ -7,6 +7,7 @@
 
 SRC=		src/components/4001.cpp			\
 			src/components/4011.cpp			\
+			src/components/4030.cpp			\
 			src/components/4071.cpp			\
 			src/components/4081.cpp			\
 			src/components/AComponent.cpp	\

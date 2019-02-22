@@ -1,20 +1,20 @@
 /*
 ** EPITECH PROJECT, 2019
-** NorComponent.hpp
+** XorComponent.hpp
 ** File description:
 ** Class
 */
 
-#ifndef NORCOMPONENT_HPP_
-#define NORCOMPONENT_HPP_
+#ifndef XORCOMPONENT_HPP_
+#define XORCOMPONENT_HPP_
 
 #include "components/AComponent.hpp"
 
 namespace nts {
-    class NorComponent : public nts::AComponent {
+    class XorComponent : public nts::AComponent {
         public:
-            NorComponent(const std::string &name);
-            ~NorComponent() = default;
+            XorComponent(const std::string &name);
+            ~XorComponent() = default;
             nts::Tristate compute(std::size_t pin = 1);
     };
 };
