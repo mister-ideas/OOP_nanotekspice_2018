@@ -44,6 +44,13 @@ namespace nts {
                 }
             }
         }
+        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
+            std::vector<Pin *> pins = dynamic_cast<AComponent *>(it->second)->getPins();
+            for (int i = 0; i < pins.size(); i++) {
+                if (pins[i]->getLinkedComponent() == nullptr || pins[i]->getLinkedPin() == -1)
+                    throw Error("Link: One or multiple component(s) don't have linked component and/or linked pin");
+            }
+        }
     }
 
     std::unordered_map<std::string, IComponent *> Parser::fillMap(std::stringstream &buff)
@@ -58,8 +65,6 @@ namespace nts {
             if (std::regex_search(line, match, regex)) {
                 if (components.find(match[3]) == components.end()) {
                     IComponent *temp = factory.createComponent(match[1], match[3]);
-                    dynamic_cast<AComponent *>(temp)->setType(match[1]);
-                    dynamic_cast<AComponent *>(temp)->setName(match[3]);
                     components[match[3]] = temp;
                 } else
                     throw Error("Create: Component name already used");
