@@ -23,9 +23,9 @@ namespace nts {
         }
         try {
             _components = parser.parseFile(av[1]);
-            
-            //launch
-            //display
+            commands.checkParameters(_components, av);
+            commands.simulate(_components);
+            commands.display(_components);
             //listen std::cin
             //...
         } catch (Error &e) {
