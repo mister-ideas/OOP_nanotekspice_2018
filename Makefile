@@ -10,9 +10,12 @@ SRC=		src/components/4001.cpp			\
 			src/components/4071.cpp			\
 			src/components/4081.cpp			\
 			src/components/AComponent.cpp	\
+			src/components/Clock.cpp		\
+			src/components/False.cpp		\
 			src/components/Input.cpp		\
 			src/components/Output.cpp		\
 			src/components/Pin.cpp			\
+			src/components/True.cpp			\
 			src/core/Commands.cpp			\
 			src/core/Error.cpp				\
 			src/core/Main.cpp				\
