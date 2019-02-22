@@ -9,7 +9,7 @@
 
 namespace nts {
     Pin::Pin(PIN_TYPE type) : _type(type), _value(UNDEFINED),
-    _linked_component(nullptr), _linked_pin(0)
+    _linked_component(nullptr), _linked_pin(-1)
     {
     }
 
