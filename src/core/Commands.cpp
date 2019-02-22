@@ -67,8 +67,10 @@ namespace nts {
             else {
                 if (std::regex_search(input, match, regex))
                     changeInputValue(components, match[1], stoi(match[3]));
-                else
-                    return;
+                else {
+                    std::cerr << "Error: Init: Wrong input value change" << std::endl;
+                    exit(84);
+                }
             }
         }
     }
