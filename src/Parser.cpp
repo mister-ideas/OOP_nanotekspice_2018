@@ -46,10 +46,13 @@ namespace nts {
         }
         for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             std::vector<Pin *> pins = dynamic_cast<AComponent *>(it->second)->getPins();
+            int nb = 0;
             for (int i = 0; i < pins.size(); i++) {
                 if (pins[i]->getLinkedComponent() == nullptr || pins[i]->getLinkedPin() == -1)
-                    throw Error("Link: One or multiple component(s) don't have linked component and/or linked pin");
+                    nb++;
             }
+            if (nb == pins.size())
+                throw Error("Link: One or multiple component(s) pin(s) don't have linked component and/or linked pin");
         }
     }
 
