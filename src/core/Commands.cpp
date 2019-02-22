@@ -11,11 +11,13 @@
 #include "components/AComponent.hpp"
 
 namespace nts {
-    void Commands::changeInputValue(std::unordered_map<std::string, IComponent *> components, const std::string &name, int value) const
+    void Commands::changeInputValue(std::unordered_map<std::string, IComponent *> components, const std::string &name, int value, int mode) const
     {
         auto it = components.find(name);
         if (it == components.end())
             throw Error("Init: Unknown input name");
+        if (mode == 1 && !strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Clock"))
+            throw Error("Init: Tried to change value of a clock component during execution");
         if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Input")
         || !strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Clock"))
             dynamic_cast<AComponent *>(it->second)->getPins()[0]->setValue(value ? Tristate::TRUE : Tristate::FALSE);
@@ -32,7 +34,7 @@ namespace nts {
         for (int i = 2; av[i]; i++) {
             parameter = av[i];
             if (std::regex_search(parameter, match, regex))
-                changeInputValue(components, match[1], stoi(match[3]));
+                changeInputValue(components, match[1], stoi(match[3]), 0);
             else
                 throw Error("Init: Wrong input initialization");
         }
@@ -66,7 +68,7 @@ namespace nts {
                 dump(components);
             else {
                 if (std::regex_search(input, match, regex))
-                    changeInputValue(components, match[1], stoi(match[3]));
+                    changeInputValue(components, match[1], stoi(match[3]), 1);
                 else {
                     std::cerr << "Error: Init: Wrong input value change" << std::endl;
                     exit(84);
@@ -90,6 +92,12 @@ namespace nts {
         for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output"))
                 it->second->compute(1);
+        }
+        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
+            if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Clock")) {
+                Tristate value = dynamic_cast<AComponent *>(it->second)->getPins()[0]->getValue();
+                dynamic_cast<AComponent *>(it->second)->getPins()[0]->setValue(value == Tristate::TRUE ? Tristate::FALSE : Tristate::TRUE);
+            }
         }
     }
 

@@ -17,7 +17,7 @@ namespace nts {
         public:
             Commands() = default;
             ~Commands() = default;
-            void changeInputValue(std::unordered_map<std::string, IComponent *> _components, const std::string &name, int value) const;
+            void changeInputValue(std::unordered_map<std::string, IComponent *> _components, const std::string &name, int value, int mode) const;
             void checkParameters(std::unordered_map<std::string, IComponent *> components, char **av) const;
             void readInput(std::unordered_map<std::string, IComponent *> components) const noexcept;
             void display(std::unordered_map<std::string, IComponent *> components) const noexcept;
