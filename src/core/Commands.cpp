@@ -53,25 +53,30 @@ namespace nts {
         std::smatch match;
         std::string input;
         std::cout << "> ";
-        if (std::getline(std::cin, input)) {
-            if (input.empty())
-                return;
-            if (!strcmp(input.c_str(), "exit"))
-                exit(0);
-            else if (!strcmp(input.c_str(), "display"))
-                display(components);
-            else if (!strcmp(input.c_str(), "simulate"))
-                simulate(components);
-            else if (!strcmp(input.c_str(), "loop"))
-                loop(components);
-            else if (!strcmp(input.c_str(), "dump"))
-                dump(components);
-            else {
-                if (std::regex_search(input, match, regex))
-                    changeInputValue(components, match[1], stoi(match[3]), 1);
-                else
-                    throw Error("Error: Init: Wrong command/input value change");
+
+        try {
+            if (std::getline(std::cin, input)) {
+                if (input.empty())
+                    return;
+                if (!strcmp(input.c_str(), "exit"))
+                    exit(0);
+                else if (!strcmp(input.c_str(), "display"))
+                    display(components);
+                else if (!strcmp(input.c_str(), "simulate"))
+                    simulate(components);
+                else if (!strcmp(input.c_str(), "loop"))
+                    loop(components);
+                else if (!strcmp(input.c_str(), "dump"))
+                    dump(components);
+                else {
+                    if (std::regex_search(input, match, regex))
+                        changeInputValue(components, match[1], stoi(match[3]), 1);
+                    else
+                        throw Error("Init: Wrong command/input value change");
+                }
             }
+        } catch (Error &e) {
+            std::cerr << "Error: " << e.what() << std::endl;
         }
     }
 

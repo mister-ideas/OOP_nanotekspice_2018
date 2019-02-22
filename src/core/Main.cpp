@@ -26,12 +26,8 @@ namespace nts {
             commands.checkParameters(_components, av);
             commands.simulate(_components);
             commands.display(_components);
-            while (1) {
-                try {
-                    commands.readInput(_components);
-                } catch (Error &e)
-                    std::cerr << "Error: " << e.what() << std::endl;
-            }
+            while (1)
+                commands.readInput(_components);
         } catch (Error &e) {
             std::cerr << "Error: " << e.what() << std::endl;
             return 84;
