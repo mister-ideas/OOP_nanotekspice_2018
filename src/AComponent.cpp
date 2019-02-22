@@ -16,7 +16,7 @@ namespace nts {
         || dynamic_cast<AComponent *>(&other)->getPins()[otherPin - 1]->getType() == Pin::PIN_TYPE::VSS)
             throw Error("Link: Unknown or unlinkable pin");
         _pins[pin - 1]->setLinkedComponent(&other);
-        _pins[pin - 1]->setLinkedPin(otherPin - 1);
+        _pins[pin - 1]->setLinkedPin(otherPin);
     }
 
     void AComponent::dump() const
