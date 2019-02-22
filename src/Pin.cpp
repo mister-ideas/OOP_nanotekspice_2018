@@ -13,10 +13,6 @@ namespace nts {
     {
     }
 
-    Pin::~Pin()
-    {
-    }
-
     Pin::PIN_TYPE Pin::getType() const
     {
         return _type;

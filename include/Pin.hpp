@@ -21,7 +21,7 @@ namespace nts {
                 VDD
             };
             Pin(PIN_TYPE type = UNKNOWN);
-            ~Pin();
+            ~Pin() = default;
             PIN_TYPE getType() const;
             Tristate getValue() const;
             IComponent *getLinkedComponent() const;

@@ -14,7 +14,7 @@
 class Error : public std::exception {
 	public:
 		Error(const std::string &msg = "N/A");
-		~Error();
+		~Error() = default;
         const char *what() const noexcept;
 
 	private:

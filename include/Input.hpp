@@ -14,7 +14,7 @@ namespace nts {
     class Input : public AComponent {
         public:
             Input(const std::string &name);
-            ~Input();
+            ~Input() = default;
             nts::Tristate compute(std::size_t pin = 1);
     };
 };

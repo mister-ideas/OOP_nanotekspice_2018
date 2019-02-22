@@ -14,8 +14,8 @@
 namespace nts {
     class Main {
         public:
-            Main();
-            ~Main();
+            Main() = default;
+            ~Main() = default;
             int core(int ac, char **av);
 
         private:

@@ -14,7 +14,8 @@ SRC=		src/AComponent.cpp	\
 			src/4071.cpp		\
 			src/4081.cpp		\
 			src/Output.cpp		\
-			src/Input.cpp
+			src/Input.cpp		\
+			src/Commands.cpp
 
 OBJ=		$(SRC:.cpp=.o)
 

@@ -15,14 +15,6 @@
 #include "Error.hpp"
 
 namespace nts {
-    Parser::Parser()
-    {
-    }
-
-    Parser::~Parser()
-    {
-    }
-
     bool Parser::isEmpty(const std::string &line) const
     {
         for (int i = 0; i < line.size(); i++) {
@@ -35,7 +27,7 @@ namespace nts {
     void Parser::fillLinks(std::stringstream &buff, std::unordered_map<std::string, IComponent *> components)
     {
         std::string line;
-        std::regex regex("^(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s+)(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s*)((#)(.*))?$");
+        static std::regex const regex("^(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s+)(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s*)((#)(.*))?$");
         std::smatch match;
         std::unordered_map<std::string, IComponent *>::iterator component1;
         std::unordered_map<std::string, IComponent *>::iterator component2;
@@ -59,7 +51,7 @@ namespace nts {
         Factory factory;
         std::unordered_map<std::string, IComponent *> components;
         std::string line;
-        std::regex regex("^([[:alnum:]]+)(\\s+)([[:alnum:]]+)(\\s*)((#)(.*))?$");
+        static std::regex const regex("^([[:alnum:]]+)(\\s+)([[:alnum:]]+)(\\s*)((#)(.*))?$");
         std::smatch match;
 
         while (std::getline(buff, line) && line.find(".links:") == std::string::npos) {

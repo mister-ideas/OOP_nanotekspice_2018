@@ -9,28 +9,26 @@
 #include "Main.hpp"
 #include "Parser.hpp"
 #include "Error.hpp"
+#include "Commands.hpp"
 
 namespace nts {
-    Main::Main()
-    {
-    }
-
-    Main::~Main()
-    {
-    }
-
     int Main::core(int ac, char **av)
     {
+        Parser parser;
+        Commands commands;
+
         if (ac < 2) {
             std::cerr << "Error: Call: Not enough arguments" << std::endl;
             return 84;
         }
-        Parser parser;
         try {
             _components = parser.parseFile(av[1]);
+            
+            //launch
+            //display
+            //listen std::cin
             //...
         } catch (Error &e) {
-            //need to implement Error class
             std::cerr << "Error: " << e.what() << std::endl;
             return 84;
         }
@@ -38,7 +36,7 @@ namespace nts {
     }
 }
 
-int main(int ac,  char **av)
+int main(int ac, char **av)
 {
     nts::Main main;
     return main.core(ac, av);

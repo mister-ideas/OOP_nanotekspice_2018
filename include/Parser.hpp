@@ -14,8 +14,8 @@
 namespace nts {
     class Parser {
         public:
-            Parser();
-            ~Parser();
+            Parser() = default;
+            ~Parser() = default;
             std::unordered_map<std::string, IComponent *> parseFile(char *filename);
             bool isEmpty(const std::string &line) const;
             std::unordered_map<std::string, IComponent *> fillMap(std::stringstream &buff);
