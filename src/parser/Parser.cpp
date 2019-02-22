@@ -9,10 +9,10 @@
 #include <string>
 #include <sstream>
 #include <regex>
-#include "Parser.hpp"
-#include "Factory.hpp"
-#include "AComponent.hpp"
-#include "Error.hpp"
+#include "parser/Parser.hpp"
+#include "parser/Factory.hpp"
+#include "components/AComponent.hpp"
+#include "core/Error.hpp"
 
 namespace nts {
     bool Parser::isEmpty(const std::string &line) const noexcept

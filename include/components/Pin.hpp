@@ -8,7 +8,7 @@
 #ifndef PIN_HPP_
 #define PIN_HPP_
 
-#include "IComponent.hpp"
+#include "components/IComponent.hpp"
 
 namespace nts {
     class Pin {

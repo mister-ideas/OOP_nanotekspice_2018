@@ -5,8 +5,8 @@
 ** Methods
 */
 
-#include "4081.hpp"
-#include "Error.hpp"
+#include "components/4081.hpp"
+#include "core/Error.hpp"
 
 namespace nts {
     AndComponent::AndComponent(const std::string &name)

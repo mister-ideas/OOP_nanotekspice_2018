@@ -6,9 +6,9 @@
 */
 
 #include <regex>
-#include "Commands.hpp"
-#include "Error.hpp"
-#include "AComponent.hpp"
+#include "core/Commands.hpp"
+#include "core/Error.hpp"
+#include "components/AComponent.hpp"
 
 namespace nts {
     void Commands::changeInputValue(std::unordered_map<std::string, IComponent *> components, const std::string &name, int value) const

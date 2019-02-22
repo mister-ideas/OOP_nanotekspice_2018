@@ -5,9 +5,9 @@
 ** Methods
 */
 
-#include "Input.hpp"
-#include "Pin.hpp"
-#include "Error.hpp"
+#include "components/Input.hpp"
+#include "components/Pin.hpp"
+#include "core/Error.hpp"
 
 namespace nts {
     Input::Input(const std::string &name)

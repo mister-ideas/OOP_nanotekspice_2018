@@ -5,8 +5,8 @@
 ** Methods
 */
 
-#include "4071.hpp"
-#include "Error.hpp"
+#include "components/4071.hpp"
+#include "core/Error.hpp"
 
 namespace nts {
     OrComponent::OrComponent(const std::string &name)

@@ -5,9 +5,9 @@
 ** Methods
 */
 
-#include "Output.hpp"
-#include "Pin.hpp"
-#include "Error.hpp"
+#include "components/Output.hpp"
+#include "components/Pin.hpp"
+#include "core/Error.hpp"
 
 namespace nts {
     Output::Output(const std::string &name)

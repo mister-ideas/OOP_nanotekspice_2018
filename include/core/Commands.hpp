@@ -10,7 +10,7 @@
 
 #include <string>
 #include <unordered_map>
-#include "IComponent.hpp"
+#include "components/IComponent.hpp"
 
 namespace nts {
     class Commands {

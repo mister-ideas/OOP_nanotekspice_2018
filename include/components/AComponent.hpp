@@ -10,8 +10,8 @@
 
 #include <string>
 #include <vector>
-#include "IComponent.hpp"
-#include "Pin.hpp"
+#include "components/IComponent.hpp"
+#include "components/Pin.hpp"
 
 namespace nts {
     class AComponent : public nts::IComponent {

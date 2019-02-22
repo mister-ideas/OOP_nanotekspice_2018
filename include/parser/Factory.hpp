@@ -8,7 +8,7 @@
 #ifndef FACTORY_HPP_
 #define FACTORY_HPP_
 
-#include "IComponent.hpp"
+#include "components/IComponent.hpp"
 
 namespace nts {
     class Factory {

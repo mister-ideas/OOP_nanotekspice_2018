@@ -6,10 +6,10 @@
 */
 
 #include <iostream>
-#include "Main.hpp"
-#include "Parser.hpp"
-#include "Error.hpp"
-#include "Commands.hpp"
+#include "core/Main.hpp"
+#include "core/Error.hpp"
+#include "core/Commands.hpp"
+#include "parser/Parser.hpp"
 
 namespace nts {
     int Main::core(int ac, char **av) noexcept

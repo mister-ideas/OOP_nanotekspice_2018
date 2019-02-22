@@ -5,17 +5,17 @@
 ## Makefile
 ##
 
-SRC=		src/AComponent.cpp	\
-			src/Factory.cpp		\
-			src/Main.cpp		\
-			src/Parser.cpp		\
-			src/Pin.cpp			\
-			src/Error.cpp		\
-			src/4071.cpp		\
-			src/4081.cpp		\
-			src/Output.cpp		\
-			src/Input.cpp		\
-			src/Commands.cpp
+SRC=		src/components/4071.cpp			\
+			src/components/4081.cpp			\
+			src/components/AComponent.cpp	\
+			src/components/Input.cpp		\
+			src/components/Output.cpp		\
+			src/components/Pin.cpp			\
+			src/core/Commands.cpp			\
+			src/core/Error.cpp				\
+			src/core/Main.cpp				\
+			src/parser/Factory.cpp			\
+			src/parser/Parser.cpp			\
 
 OBJ=		$(SRC:.cpp=.o)
 

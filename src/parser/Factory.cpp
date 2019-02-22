@@ -7,12 +7,12 @@
 
 #include <unordered_map>
 #include <functional>
-#include "Factory.hpp"
-#include "Error.hpp"
-#include "4071.hpp"
-#include "4081.hpp"
-#include "Input.hpp"
-#include "Output.hpp"
+#include "components/4071.hpp"
+#include "components/4081.hpp"
+#include "components/Input.hpp"
+#include "components/Output.hpp"
+#include "parser/Factory.hpp"
+#include "core/Error.hpp"
 
 namespace nts {
     IComponent *Factory::createComponent(const std::string &type, const std::string &name) const
