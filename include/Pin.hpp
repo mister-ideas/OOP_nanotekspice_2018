@@ -22,14 +22,14 @@ namespace nts {
             };
             Pin(PIN_TYPE type = UNKNOWN);
             ~Pin() = default;
-            PIN_TYPE getType() const;
-            Tristate getValue() const;
-            IComponent *getLinkedComponent() const;
-            int getLinkedPin() const;
-            void setType(PIN_TYPE type);
-            void setValue(Tristate value);
-            void setLinkedComponent(IComponent *component);
-            void setLinkedPin(int pin);
+            PIN_TYPE getType() const noexcept;
+            Tristate getValue() const noexcept;
+            IComponent *getLinkedComponent() const noexcept;
+            int getLinkedPin() const noexcept;
+            void setType(PIN_TYPE type) noexcept;
+            void setValue(Tristate value) noexcept;
+            void setLinkedComponent(IComponent *component) noexcept;
+            void setLinkedPin(int pin) noexcept;
 
         private:
             PIN_TYPE _type;

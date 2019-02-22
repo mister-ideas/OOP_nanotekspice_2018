@@ -16,7 +16,7 @@ namespace nts {
         public:
             Main() = default;
             ~Main() = default;
-            int core(int ac, char **av);
+            int core(int ac, char **av) noexcept;
 
         private:
             std::unordered_map<std::string, IComponent *> _components;

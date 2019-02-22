@@ -15,8 +15,7 @@
 #include "Output.hpp"
 
 namespace nts {
-    IComponent *Factory::createComponent(const std::string &type,
-    const std::string &name)
+    IComponent *Factory::createComponent(const std::string &type, const std::string &name) const
     {
         std::unordered_map<std::string, std::function<IComponent *(const std::string &)>> ctors {
             {"4071", [](const std::string &name) { return new OrComponent(name); }},

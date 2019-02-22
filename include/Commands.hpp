@@ -17,10 +17,10 @@ namespace nts {
         public:
             Commands() = default;
             ~Commands() = default;
-            void changeInputValue(std::unordered_map<std::string, IComponent *> _components, const std::string &name, int value);
-            void checkParameters(std::unordered_map<std::string, IComponent *> components, char **av);
-            void simulate(std::unordered_map<std::string, IComponent *> components) const;
-            void display(std::unordered_map<std::string, IComponent *> components) const;
+            void changeInputValue(std::unordered_map<std::string, IComponent *> _components, const std::string &name, int value) const;
+            void checkParameters(std::unordered_map<std::string, IComponent *> components, char **av) const;
+            void simulate(std::unordered_map<std::string, IComponent *> components) const noexcept;
+            void display(std::unordered_map<std::string, IComponent *> components) const noexcept;
     };
 }
 

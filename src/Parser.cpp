@@ -15,7 +15,7 @@
 #include "Error.hpp"
 
 namespace nts {
-    bool Parser::isEmpty(const std::string &line) const
+    bool Parser::isEmpty(const std::string &line) const noexcept
     {
         for (int i = 0; i < line.size(); i++) {
             if (line[i] != ' ' || line[i] != '\t')
@@ -24,7 +24,7 @@ namespace nts {
         return true;
     }
 
-    void Parser::fillLinks(std::stringstream &buff, std::unordered_map<std::string, IComponent *> components)
+    void Parser::fillLinks(std::stringstream &buff, std::unordered_map<std::string, IComponent *> components) const
     {
         std::string line;
         static std::regex const regex("^(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s+)(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s*)((#)(.*))?$");
@@ -56,7 +56,7 @@ namespace nts {
         }
     }
 
-    std::unordered_map<std::string, IComponent *> Parser::fillMap(std::stringstream &buff)
+    std::unordered_map<std::string, IComponent *> Parser::fillMap(std::stringstream &buff) const
     {
         Factory factory;
         std::unordered_map<std::string, IComponent *> components;
@@ -79,7 +79,7 @@ namespace nts {
         return components;
     }
 
-    std::unordered_map<std::string, IComponent *> Parser::parseFile(char *filename)
+    std::unordered_map<std::string, IComponent *> Parser::parseFile(char *filename) const
     {
         std::ifstream file(filename);
         std::string line;

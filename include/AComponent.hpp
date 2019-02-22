@@ -20,12 +20,12 @@ namespace nts {
             virtual nts::Tristate compute(std::size_t pin = 1) = 0;
             void setLink(std::size_t pin, nts::IComponent &other,
             std::size_t otherPin);
-            void dump() const;
-            const std::string &getName() const;
-            const std::string &getType() const;
-            std::vector<Pin *> getPins() const;
-            void setName(const std::string &name);
-            void setType(const std::string &type);
+            void dump() const noexcept;
+            const std::string &getName() const noexcept;
+            const std::string &getType() const noexcept;
+            std::vector<Pin *> getPins() const noexcept;
+            void setName(const std::string &name) noexcept;
+            void setType(const std::string &type) noexcept;
 
         protected:
             std::vector<Pin *> _pins;

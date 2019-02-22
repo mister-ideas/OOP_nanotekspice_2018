@@ -13,42 +13,42 @@ namespace nts {
     {
     }
 
-    Pin::PIN_TYPE Pin::getType() const
+    Pin::PIN_TYPE Pin::getType() const noexcept
     {
         return _type;
     }
 
-    Tristate Pin::getValue() const
+    Tristate Pin::getValue() const noexcept
     {
         return _value;
     }
 
-    IComponent *Pin::getLinkedComponent() const
+    IComponent *Pin::getLinkedComponent() const noexcept
     {
         return _linked_component;
     }
 
-    int Pin::getLinkedPin() const
+    int Pin::getLinkedPin() const noexcept
     {
         return _linked_pin;
     }
 
-    void Pin::setType(Pin::PIN_TYPE type)
+    void Pin::setType(Pin::PIN_TYPE type) noexcept
     {
         _type = type;
     }
 
-    void Pin::setValue(Tristate value)
+    void Pin::setValue(Tristate value) noexcept
     {
         _value = value;
     }
 
-    void Pin::setLinkedComponent(IComponent *component)
+    void Pin::setLinkedComponent(IComponent *component) noexcept
     {
         _linked_component = component;
     }
 
-    void Pin::setLinkedPin(int pin)
+    void Pin::setLinkedPin(int pin) noexcept
     {
         _linked_pin = pin;
     }

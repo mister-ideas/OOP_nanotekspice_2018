@@ -11,7 +11,7 @@
 #include "AComponent.hpp"
 
 namespace nts {
-    void Commands::changeInputValue(std::unordered_map<std::string, IComponent *> components, const std::string &name, int value)
+    void Commands::changeInputValue(std::unordered_map<std::string, IComponent *> components, const std::string &name, int value) const
     {
         auto it = components.find(name);
         if (it == components.end())
@@ -23,7 +23,7 @@ namespace nts {
             throw Error("Init: Tried to init other component type than input or clock");
     }
 
-    void Commands::checkParameters(std::unordered_map<std::string, IComponent *> components, char **av)
+    void Commands::checkParameters(std::unordered_map<std::string, IComponent *> components, char **av) const
     {
         std::string parameter;
         static std::regex const regex("^([[:alnum:]]+)(={1})(0{1}|1{1})$");
@@ -45,7 +45,7 @@ namespace nts {
         }
     }
 
-    void Commands::simulate(std::unordered_map<std::string, IComponent *> components) const
+    void Commands::simulate(std::unordered_map<std::string, IComponent *> components) const noexcept
     {
         for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output"))
@@ -53,7 +53,7 @@ namespace nts {
         }
     }
 
-    void Commands::display(std::unordered_map<std::string, IComponent *> components) const
+    void Commands::display(std::unordered_map<std::string, IComponent *> components) const noexcept
     {
         for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output")) {

@@ -12,7 +12,7 @@
 #include "Commands.hpp"
 
 namespace nts {
-    int Main::core(int ac, char **av)
+    int Main::core(int ac, char **av) noexcept
     {
         Parser parser;
         Commands commands;

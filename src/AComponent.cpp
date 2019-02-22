@@ -19,32 +19,32 @@ namespace nts {
         _pins[pin - 1]->setLinkedPin(otherPin);
     }
 
-    void AComponent::dump() const
+    void AComponent::dump() const noexcept
     {
         std::cout << _name << " - " << _type << std::endl;
     }
 
-    const std::string &AComponent::getName() const
+    const std::string &AComponent::getName() const noexcept
     {
         return _name;
     }
 
-    const std::string &AComponent::getType() const
+    const std::string &AComponent::getType() const noexcept
     {
         return _type;
     }
 
-    std::vector<Pin *> AComponent::getPins() const
+    std::vector<Pin *> AComponent::getPins() const noexcept
     {
         return _pins;
     }
 
-    void AComponent::setName(const std::string &name)
+    void AComponent::setName(const std::string &name) noexcept
     {
         _name = name;
     }
 
-    void AComponent::setType(const std::string &type)
+    void AComponent::setType(const std::string &type) noexcept
     {
         _type = type;
     }

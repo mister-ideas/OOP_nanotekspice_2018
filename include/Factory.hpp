@@ -15,8 +15,7 @@ namespace nts {
         public:
             Factory() = default;
             ~Factory() = default;
-            IComponent *createComponent(const std::string &type,
-            const std::string &name);
+            IComponent *createComponent(const std::string &type, const std::string &name) const;
     };
 }
 
