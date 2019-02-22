@@ -6,6 +6,7 @@
 */
 
 #include "4071.hpp"
+#include "Error.hpp"
 
 namespace nts {
     OrComponent::OrComponent(const std::string &name)
@@ -28,16 +29,25 @@ namespace nts {
         _pins.push_back(new Pin(Pin::PIN_TYPE::VDD));
     }
 
-    OrComponent::~OrComponent()
-    {
-    }
-
     nts::Tristate OrComponent::compute(std::size_t pin)
     {
-        if (_pins[0]->getLinkedComponent()->compute() == nts::UNDEFINED || _pins[1]->getLinkedComponent()->compute() == nts::UNDEFINED)
-            return nts::UNDEFINED;
-        else if (_pins[0]->getLinkedComponent()->compute() == nts::FALSE && _pins[1]->getLinkedComponent()->compute() == nts::FALSE)
-            return nts::FALSE;
-        return nts::TRUE;
+        int input1;
+        int input2;
+
+        if (pin == 3 || pin == 10) {
+            input1 = pin - 3;
+            input2 = pin - 2;
+        } else if (pin == 4 || pin == 11) {
+            input1 = pin;
+            input2 = pin + 1;
+        } else
+            throw Error("Compute: Tried to compute an invalid pin");
+        if (_pins[input1]->getLinkedComponent()->compute(1) == nts::UNDEFINED || _pins[input2]->getLinkedComponent()->compute(1) == nts::UNDEFINED)
+            _pins[pin - 1]->setValue(nts::UNDEFINED);
+        else if (_pins[input1]->getLinkedComponent()->compute(1) == nts::FALSE && _pins[input2]->getLinkedComponent()->compute(1) == nts::FALSE)
+            _pins[pin - 1]->setValue(nts::FALSE);
+        else
+            _pins[pin - 1]->setValue(nts::TRUE);
+        return _pins[pin - 1]->getValue();
     }
 }

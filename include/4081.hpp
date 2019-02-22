@@ -14,7 +14,7 @@ namespace nts {
     class AndComponent : public nts::AComponent {
         public:
             AndComponent(const std::string &name);
-            ~AndComponent();
+            ~AndComponent() = default;
             nts::Tristate compute(std::size_t pin = 1);
     };
 };
