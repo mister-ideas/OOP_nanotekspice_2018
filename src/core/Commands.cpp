@@ -20,7 +20,7 @@ namespace nts {
         || !strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Clock"))
             dynamic_cast<AComponent *>(it->second)->getPins()[0]->setValue(value ? Tristate::TRUE : Tristate::FALSE);
         else
-            throw Error("Init: Tried to init other component type than input or clock");
+            throw Error("Init: Tried to change value for a non-input/clock component");
     }
 
     void Commands::checkParameters(std::unordered_map<std::string, IComponent *> components, char **av) const
@@ -45,11 +45,31 @@ namespace nts {
         }
     }
 
-    void Commands::simulate(std::unordered_map<std::string, IComponent *> components) const noexcept
+    void Commands::readInput(std::unordered_map<std::string, IComponent *> components) const noexcept
     {
-        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
-            if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output"))
-                it->second->compute(1);
+        static std::regex const regex("^([[:alnum:]]+)(={1})(0{1}|1{1})$");
+        std::smatch match;
+        std::string input;
+        std::cout << "> ";
+        if (std::getline(std::cin, input)) {
+            if (input.empty())
+                return;
+            if (!strcmp(input.c_str(), "exit"))
+                exit(0);
+            else if (!strcmp(input.c_str(), "display"))
+                display(components);
+            else if (!strcmp(input.c_str(), "simulate"))
+                simulate(components);
+            else if (!strcmp(input.c_str(), "loop"))
+                loop(components);
+            else if (!strcmp(input.c_str(), "dump"))
+                dump(components);
+            else {
+                if (std::regex_search(input, match, regex))
+                    changeInputValue(components, match[1], stoi(match[3]));
+                else
+                    return;
+            }
         }
     }
 
@@ -61,5 +81,27 @@ namespace nts {
                 std::cout << dynamic_cast<AComponent *>(it->second)->getName().c_str() << '=' << (value == Tristate::UNDEFINED ? 'U' : value) << std::endl;
             }
         }
+    }
+
+    void Commands::simulate(std::unordered_map<std::string, IComponent *> components) const noexcept
+    {
+        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
+            if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output"))
+                it->second->compute(1);
+        }
+    }
+
+    void Commands::loop(std::unordered_map<std::string, IComponent *> components) const noexcept
+    {
+        while (true) {
+            simulate(components);
+            display(components);
+        }
+    }
+
+    void Commands::dump(std::unordered_map<std::string, IComponent *> components) const noexcept
+    {
+        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++)
+            it->second->dump();
     }
 }
