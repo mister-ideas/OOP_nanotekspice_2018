@@ -10,6 +10,7 @@
 #include "components/4001.hpp"
 #include "components/4011.hpp"
 #include "components/4030.hpp"
+#include "components/4069.hpp"
 #include "components/4071.hpp"
 #include "components/4081.hpp"
 #include "components/Input.hpp"
@@ -29,6 +30,7 @@ namespace nts {
             {"4011", [](const std::string &name) { return new NandComponent(name); }},
             {"4001", [](const std::string &name) { return new NorComponent(name); }},
             {"4030", [](const std::string &name) { return new XorComponent(name); }},
+            {"4069", [](const std::string &name) { return new InverterComponent(name); }},
             {"output", [](const std::string &name) { return new Output(name); }},
             {"input", [](const std::string &name) { return new Input(name); }},
             {"true", [](const std::string &name) { return new True(name); }},
