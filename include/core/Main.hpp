@@ -8,7 +8,7 @@
 #ifndef MAIN_HPP_
 #define MAIN_HPP_
 
-#include <unordered_map>
+#include <map>
 #include "components/IComponent.hpp"
 
 namespace nts {
@@ -19,7 +19,7 @@ namespace nts {
             int core(int ac, char **av) noexcept;
 
         private:
-            std::unordered_map<std::string, IComponent *> _components;
+            std::map<std::string, IComponent *> _components;
     };
 }
 

@@ -9,7 +9,7 @@
 #define COMMANDS_HPP_
 
 #include <string>
-#include <unordered_map>
+#include <map>
 #include "components/IComponent.hpp"
 
 namespace nts {
@@ -17,13 +17,13 @@ namespace nts {
         public:
             Commands() = default;
             ~Commands() = default;
-            void changeInputValue(std::unordered_map<std::string, IComponent *> _components, const std::string &name, int value, int mode) const;
-            void checkParameters(std::unordered_map<std::string, IComponent *> components, char **av) const;
-            void readInput(std::unordered_map<std::string, IComponent *> components) const noexcept;
-            void display(std::unordered_map<std::string, IComponent *> components) const noexcept;
-            void simulate(std::unordered_map<std::string, IComponent *> components) const noexcept;
-            void loop(std::unordered_map<std::string, IComponent *> components) const noexcept;
-            void dump(std::unordered_map<std::string, IComponent *> components) const noexcept;
+            void changeInputValue(std::map<std::string, IComponent *> _components, const std::string &name, int value, int mode) const;
+            void checkParameters(std::map<std::string, IComponent *> components, char **av) const;
+            void readInput(std::map<std::string, IComponent *> components) const noexcept;
+            void display(std::map<std::string, IComponent *> components) const noexcept;
+            void simulate(std::map<std::string, IComponent *> components) const noexcept;
+            void loop(std::map<std::string, IComponent *> components) const noexcept;
+            void dump(std::map<std::string, IComponent *> components) const noexcept;
     };
 }
 

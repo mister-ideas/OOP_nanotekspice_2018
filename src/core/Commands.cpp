@@ -11,7 +11,7 @@
 #include "components/AComponent.hpp"
 
 namespace nts {
-    void Commands::changeInputValue(std::unordered_map<std::string, IComponent *> components, const std::string &name, int value, int mode) const
+    void Commands::changeInputValue(std::map<std::string, IComponent *> components, const std::string &name, int value, int mode) const
     {
         auto it = components.find(name);
         if (it == components.end())
@@ -25,7 +25,7 @@ namespace nts {
             throw Error("Init: Tried to change value for a non-input/clock component");
     }
 
-    void Commands::checkParameters(std::unordered_map<std::string, IComponent *> components, char **av) const
+    void Commands::checkParameters(std::map<std::string, IComponent *> components, char **av) const
     {
         std::string parameter;
         static std::regex const regex("^([[:alnum:]]+)(={1})(0{1}|1{1})$");
@@ -38,7 +38,7 @@ namespace nts {
             else
                 throw Error("Init: Wrong input initialization");
         }
-        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
+        for (std::map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Input")
             || !strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Clock")) {
                 if (dynamic_cast<AComponent *>(it->second)->getPins()[0]->getValue() == Tristate::UNDEFINED)
@@ -47,7 +47,7 @@ namespace nts {
         }
     }
 
-    void Commands::readInput(std::unordered_map<std::string, IComponent *> components) const noexcept
+    void Commands::readInput(std::map<std::string, IComponent *> components) const noexcept
     {
         static std::regex const regex("^([[:alnum:]]+)(={1})(0{1}|1{1})$");
         std::smatch match;
@@ -83,9 +83,9 @@ namespace nts {
         }
     }
 
-    void Commands::display(std::unordered_map<std::string, IComponent *> components) const noexcept
+    void Commands::display(std::map<std::string, IComponent *> components) const noexcept
     {
-        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
+        for (std::map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output")) {
                 Tristate value = dynamic_cast<AComponent *>(it->second)->getPins()[0]->getValue();
                 std::cout << dynamic_cast<AComponent *>(it->second)->getName().c_str() << '=' << (value == Tristate::UNDEFINED ? 'U' : value) << std::endl;
@@ -93,9 +93,9 @@ namespace nts {
         }
     }
 
-    void Commands::simulate(std::unordered_map<std::string, IComponent *> components) const noexcept
+    void Commands::simulate(std::map<std::string, IComponent *> components) const noexcept
     {
-        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
+        for (std::map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output"))
                 it->second->compute(1);
             else if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Clock")) {
@@ -105,7 +105,7 @@ namespace nts {
         }
     }
 
-    void Commands::loop(std::unordered_map<std::string, IComponent *> components) const noexcept
+    void Commands::loop(std::map<std::string, IComponent *> components) const noexcept
     {
         while (true) {
             simulate(components);
@@ -113,9 +113,9 @@ namespace nts {
         }
     }
 
-    void Commands::dump(std::unordered_map<std::string, IComponent *> components) const noexcept
+    void Commands::dump(std::map<std::string, IComponent *> components) const noexcept
     {
-        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++)
+        for (std::map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++)
             it->second->dump();
     }
 }

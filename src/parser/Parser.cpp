@@ -24,13 +24,13 @@ namespace nts {
         return true;
     }
 
-    void Parser::fillLinks(std::stringstream &buff, std::unordered_map<std::string, IComponent *> components) const
+    void Parser::fillLinks(std::stringstream &buff, std::map<std::string, IComponent *> components) const
     {
         std::string line;
         static std::regex const regex("^(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s+)(([[:alnum:]]+)(:{1})([[:alnum:]]+))(\\s*)((#)(.*))?$");
         std::smatch match;
-        std::unordered_map<std::string, IComponent *>::iterator component1;
-        std::unordered_map<std::string, IComponent *>::iterator component2;
+        std::map<std::string, IComponent *>::iterator component1;
+        std::map<std::string, IComponent *>::iterator component2;
 
         while (std::getline(buff, line)) {
             if (std::regex_search(line, match, regex)) {
@@ -44,7 +44,7 @@ namespace nts {
                 }
             }
         }
-        for (std::unordered_map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
+        for (std::map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             std::vector<Pin *> pins = dynamic_cast<AComponent *>(it->second)->getPins();
             int nb = 0;
             for (int i = 0; i < pins.size(); i++) {
@@ -56,10 +56,10 @@ namespace nts {
         }
     }
 
-    std::unordered_map<std::string, IComponent *> Parser::fillMap(std::stringstream &buff) const
+    std::map<std::string, IComponent *> Parser::fillMap(std::stringstream &buff) const
     {
         Factory factory;
-        std::unordered_map<std::string, IComponent *> components;
+        std::map<std::string, IComponent *> components;
         std::string line;
         static std::regex const regex("^([[:alnum:]]+)(\\s+)([[:alnum:]]+)(\\s*)((#)(.*))?$");
         std::smatch match;
@@ -79,7 +79,7 @@ namespace nts {
         return components;
     }
 
-    std::unordered_map<std::string, IComponent *> Parser::parseFile(char *filename) const
+    std::map<std::string, IComponent *> Parser::parseFile(char *filename) const
     {
         std::ifstream file(filename);
         std::string line;
@@ -98,6 +98,6 @@ namespace nts {
             return fillMap(buff);
         else
             throw Error("Create: No chipsets line");
-        return (*(new std::unordered_map<std::string, IComponent *>));
+        return (*(new std::map<std::string, IComponent *>));
     }
 }

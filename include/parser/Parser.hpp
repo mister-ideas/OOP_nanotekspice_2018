@@ -8,7 +8,7 @@
 #ifndef PARSER_HPP_
 #define PARSER_HPP_
 
-#include <unordered_map>
+#include <map>
 #include "components/IComponent.hpp"
 
 namespace nts {
@@ -17,9 +17,9 @@ namespace nts {
             Parser() = default;
             ~Parser() = default;
             bool isEmpty(const std::string &line) const noexcept;
-            void fillLinks(std::stringstream &buff, std::unordered_map<std::string, IComponent *> components) const;
-            std::unordered_map<std::string, IComponent *> fillMap(std::stringstream &buff) const;
-            std::unordered_map<std::string, IComponent *> parseFile(char *filename) const;
+            void fillLinks(std::stringstream &buff, std::map<std::string, IComponent *> components) const;
+            std::map<std::string, IComponent *> fillMap(std::stringstream &buff) const;
+            std::map<std::string, IComponent *> parseFile(char *filename) const;
     };
 }
 
