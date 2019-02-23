@@ -33,7 +33,7 @@ namespace nts {
             {"input", [](const std::string &name) { return new Input(name); }},
             {"true", [](const std::string &name) { return new True(name); }},
             {"false", [](const std::string &name) { return new False(name); }},
-            {"clock", [](const std::string &name) { return new Input(name); }},
+            {"clock", [](const std::string &name) { return new Clock(name); }},
         };
         auto it = ctors.find(type);
         if (it == ctors.end())
