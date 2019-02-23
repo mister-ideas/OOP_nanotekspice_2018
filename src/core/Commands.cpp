@@ -98,7 +98,9 @@ namespace nts {
         for (std::map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
             if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Output"))
                 it->second->compute(1);
-            else if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Clock")) {
+        }
+        for (std::map<std::string, IComponent *>::iterator it = components.begin(); it != components.end(); it++) {
+            if (!strcmp(dynamic_cast<AComponent *>(it->second)->getType().c_str(), "Clock")) {
                 Tristate value = dynamic_cast<AComponent *>(it->second)->getPins()[0]->getValue();
                 dynamic_cast<AComponent *>(it->second)->getPins()[0]->setValue(value == Tristate::TRUE ? Tristate::FALSE : Tristate::TRUE);
             }
