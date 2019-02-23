@@ -24,7 +24,7 @@ namespace nts {
         IComponent *component = _pins[0]->getLinkedComponent();
         int linked_pin = _pins[0]->getLinkedPin();
 
-        dynamic_cast<AComponent *>(component)->getPins()[linked_pin]->setValue(_pins[0]->getValue());
+        dynamic_cast<AComponent *>(component)->getPins()[linked_pin - 1]->setValue(_pins[0]->getValue());
         return _pins[0]->getValue();
     }
 }
