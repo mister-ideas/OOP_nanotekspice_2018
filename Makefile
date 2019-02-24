@@ -6,6 +6,7 @@
 ##
 
 SRC=		src/components/4001.cpp			\
+			src/components/4008.cpp			\
 			src/components/4011.cpp			\
 			src/components/4030.cpp			\
 			src/components/4069.cpp			\
