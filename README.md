@@ -5,7 +5,7 @@ Hidden behind assembly and machine languages is the hardware itself. Hardware is
 $ make
 
 # Usage
-$ ./nanotekspice [input_file_path] (input_name=input_value)
+$ ./nanotekspice [file_path] (input_name=input_value)
 
 # Mark
 **30/75**
